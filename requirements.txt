@@ -1,0 +1,20 @@
+# Gradio frontend
+gradio==3.44.0
+
+# Audio I/O & processing
+numpy==1.24.3
+scipy==1.10.1
+librosa==0.10.0
+soundfile==0.12.1
+resampy==0.4.2
+pyloudnorm==0.3.0
+
+# Deep learning backend
+torch==2.1.0
+
+# Google-Drive downloader
+gdown==4.6.4
+requests==2.31.0
+
+# Plotting
+matplotlib==3.7.1
