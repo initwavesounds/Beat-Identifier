@@ -1,6 +1,6 @@
 # Beat Identifier
 
-[▶️ Try the Beat Identifier](https://officialcyber88-beat-identifier.hf.space)
+Try it out: [Beat Identifier GUI](https://officialcyber88-beat-identifier.hf.space)
 
 A simple Gradio-based web app that analyzes an audio file (or Google Drive link) and reports:
 - **Duration**  
