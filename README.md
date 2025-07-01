@@ -79,7 +79,7 @@ pip install \
 2. **Run the app**:
 
    ```bash
-   python beat_identifier_gui.py
+   python app.py
    ```
 
    The script will automatically find an available port between 7860–7900 and launch the Gradio interface.  
