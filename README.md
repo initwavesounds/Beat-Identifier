@@ -117,4 +117,3 @@ path = "/mnt/data/README.md"
 with open(path, "w") as f:
     f.write(readme_content)
 
-path
