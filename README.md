@@ -2,88 +2,119 @@
 
 Try it out: [Beat Identifier GUI](https://officialcyber88-beat-identifier.hf.space)
 
-A simple Gradio-based web app that analyzes an audio file (or Google Drive link) and reports:
+# Create the README.md file with the provided content and structure
+
+readme_content = """# Beat Identifier GUI
+
+A Gradio-based web application to analyze audio files (MP3/WAV) and extract:
 - **Duration**  
 - **Estimated BPM (tempo)**  
-- **Main key note**  
+- **Key**  
 - **Tuning offset**  
-
-It also lets you play back the uploaded or downloaded file in-browser.
+- **In-browser playback**  
 
 ---
 
 ## Features
 
-- **Upload or Link**: Accepts local audio files (wav, mp3, etc.) or a Google Drive share URL.  
-- **Tempo Detection**: Uses `librosa` to estimate BPM.  
-- **Key Detection**: Computes chroma features to find the main musical note.  
-- **Tuning Estimate**: Reports tuning deviation in semitones.  
-- **Web UI**: Interactive interface built with Gradio’s “Soft” theme.  
-- **In-browser Playback**: Play the processed audio directly in the browser.
-
----
-
-## Dependencies
-
-Make sure you have Python ≥ 3.7 installed. Then install the following:
-
-```bash
-pip install gradio==3.44.0 librosa==0.10.0 numpy==1.24.3 soundfile==0.12.1 requests==2.31.0 matplotlib==3.7.1
-```
-
-**Note:**
-- `ffmpeg` must be installed on your system and available in your `PATH` for some audio formats.
-- If you plan to process very large files or many files, ensure you have sufficient RAM.
+- **Batch Analysis**: Drag & drop multiple audio files for simultaneous processing.  
+- **Tempo Detection**: Uses `librosa` for beat tracking and BPM estimation.  
+- **Key Detection**: Leverages chroma features to identify the main musical note.  
+- **Tuning Offset**: Estimates deviation from standard tuning in semitones.  
+- **Playback**: Play any processed file directly in your browser.  
+- **CUDA Support**: Utilizes GPU acceleration when available.
 
 ---
 
 ## Installation
 
-1. Clone this repository (or copy the script).
-2. Create and activate a virtual environment (optional, but recommended):
+### System Dependencies
+
+On Linux (including Google Colab), install the system library required by `soundfile`:
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+sudo apt-get update && sudo apt-get install -y libsndfile1
 ```
 
-3. Install the required packages:
+> ⚠️ This step is **not** included in `requirements.txt`.
+
+### Python Dependencies
+
+Create a `requirements.txt` with the following content:
+
+```txt
+soundfile
+gradio==3.44.0
+librosa==0.10.0
+numpy==1.24.3
+requests==2.31.0
+gdown==4.7.1
+torch==2.1.0
+```
+
+Then install with:
 
 ```bash
 pip install -r requirements.txt
+```
+
+Or install directly:
+
+```bash
+pip install \
+  soundfile \
+  gradio==3.44.0 \
+  librosa==0.10.0 \
+  numpy==1.24.3 \
+  requests==2.31.0 \
+  gdown==4.7.1 \
+  torch==2.1.0
 ```
 
 ---
 
 ## Usage
 
-Run the app:
+1. **Clone the repository** (or download the script file).  
+2. **Run the app**:
 
-```bash
-python app.py
-```
+   ```bash
+   python beat_identifier_gui.py
+   ```
 
-You’ll see output such as:
+   The script will automatically find an available port between 7860–7900 and launch the Gradio interface.  
+   - To share in Google Colab, it enables `share=True`.  
+   - In local/production, access the UI at `http://0.0.0.0:<port>`.
 
-```
-Running on local URL:  http://127.0.0.1:7860
-```
-
-1. Open that URL in your browser.  
-2. Upload an audio file: Drag-and-drop or browse for a local `.wav`, `.mp3`, etc.  
-3. Or paste a Google Drive share link.  
-4. Click **Analyze**.  
-5. View the **Analysis Results** (duration, BPM, key, tuning) and play back your audio.
+3. **Analyze Audio**:
+   - Drag & drop or select your MP3/WAV files.  
+   - Click **"Analyze Audio"**.  
+   - View the summary, download processed files, or playback.
 
 ---
 
-## requirements.txt
+## Optional Setup Scripts
 
-```
-gradio==3.44.0
-librosa==0.10.0
-numpy==1.24.3
-soundfile==0.12.1
-requests==2.31.0
-matplotlib==3.7.1
-```
+- **setup.sh**: Combine system and Python installs:
+
+  ```bash
+  #!/usr/bin/env bash
+  sudo apt-get update && sudo apt-get install -y libsndfile1
+  pip install -r requirements.txt
+  ```
+
+- **Dockerfile**: For containerized deployment, include both apt-get and pip steps.
+
+---
+
+## License
+
+This project is released under the **Unlicense**. See [https://unlicense.org](https://unlicense.org) for details.
+"""
+
+# Write the content to README.md
+path = "/mnt/data/README.md"
+with open(path, "w") as f:
+    f.write(readme_content)
+
+path
